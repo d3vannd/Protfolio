@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Portfolio</title>
+  <!-- Google Fonts for Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons for clean visuals -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Toast Notifications -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Lamp-mode overlay (pitch-black radial spotlight) -->
+  <div id="lamp-overlay"></div>
+
+  <!-- Custom glowing cursor dot (lamp mode only) -->
+  <div id="lamp-cursor"></div>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" id="header-logo-container">
+        <span id="logo-text" data-field="footer.brandName">Sachin</span><span class="dot">.</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#journey" class="nav-link">Journey</a>
+        <a href="#footer" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn btn-icon btn-sm" id="lamp-toggle-btn" title="Toggle Lamp Mode">
+          <i data-lucide="moon" id="lamp-icon"></i>
+        </button>
+        <button class="btn btn-secondary btn-sm" id="login-nav-btn">Login</button>
+        <button class="btn btn-primary btn-sm" id="hire-btn" onclick="document.getElementById('footer').scrollIntoView({behavior: 'smooth'})">Hire Me</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Areas -->
+  <main>
+    
+    <!-- Hero Section (Home) -->
+    <section id="home" class="hero-section">
+      <div class="hero-bg-image-container">
+        <img id="hero-img" src="" alt="Developer Portrait" class="hero-portrait">
+        <!-- Edit Overlay for image -->
+        <div class="image-edit-overlay" id="hero-img-edit-overlay">
+          <i data-lucide="camera"></i>
+          <span>Change Photo</span>
+          <input type="file" id="hero-img-input" accept="image/*" style="display: none;">
+        </div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          <span id="hero-status-tag" class="editable-text" data-field="owner.role">Full Stack Developer</span>
+        </div>
+        <h1 class="hero-heading">
+          <span class="editable-text" id="hero-intro" data-field="owner.heroIntro">Hi, I'm a</span><br>
+          <span class="highlight editable-text" id="hero-title" data-field="owner.roleHeading">Full Stack Developer</span>
+        </h1>
+        <p class="hero-subtext editable-text" id="hero-subtext" data-field="owner.subtext">
+          Software developer with practical knowledge of Java, Dart, Flutter, and frontend development. Passionate about UI/UX design and modern technologies.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary" onclick="document.getElementById('journey').scrollIntoView({behavior: 'smooth'})">View My Work</button>
+          <button class="btn btn-outline" onclick="document.getElementById('footer').scrollIntoView({behavior: 'smooth'})">Contact Me</button>
+          <button class="play-btn" id="play-intro-btn">
+            <span class="play-icon"><i data-lucide="play"></i></span>
+            <span class="play-text">PLAY REEL</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hello / About Section -->
+    <section id="about" class="about-section">
+      <div class="about-container">
+        <div class="about-info-panel">
+          <h2 class="section-title editable-text" id="about-title" data-field="about.title">Hello!</h2>
+          <p class="about-description editable-text" id="about-description" data-field="about.introduction">
+            I am SACHIN KUMAR, a software developer with practical knowledge of Java, Dart, Flutter, and frontend development. I build responsive web applications, mobile apps, and user-friendly digital solutions.
+          </p>
+          
+          <div class="skills-tags-container">
+            <div class="skills-header">
+              <h3>Core Skills</h3>
+              <button class="btn-icon-sm admin-only" id="add-tag-btn" title="Add Skill Tag"><i data-lucide="plus"></i></button>
+            </div>
+            <div class="skills-tags" id="skills-tags-list">
+              <!-- Dynamically Populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating ID Badge -->
+        <div class="badge-wrapper">
+          <div class="badge-lanyard"></div>
+          <div class="badge-clip"></div>
+          <div class="id-card">
+            <div class="id-card-header">
+              <div class="id-card-logo">
+                <span data-field="footer.brandName">Sachin</span><span class="red-dot">.</span>
+              </div>
+              <div class="id-card-chip"></div>
+            </div>
+            <div class="id-card-photo-wrapper">
+              <img id="badge-img" src="" alt="Developer Badge Photo">
+              <div class="image-edit-overlay" id="badge-img-edit-overlay">
+                <i data-lucide="camera"></i>
+                <input type="file" id="badge-img-input" accept="image/*" style="display: none;">
+              </div>
+            </div>
+            <div class="id-card-details">
+              <h3 class="id-card-name editable-text" id="badge-name" data-field="owner.name">Sachin Kumar</h3>
+              <p class="id-card-role editable-text" id="badge-role" data-field="owner.role">SOFTWARE DEV</p>
+            </div>
+            <div class="id-card-footer">
+              <div class="id-card-code">
+                <i data-lucide="code-2"></i>
+              </div>
+              <div class="id-card-barcode" id="badge-barcode">
+                <!-- SVG Barcode lines dynamically generated -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Journey & Timeline Section -->
+    <section id="journey" class="journey-section">
+      <div class="journey-grid-overlay"></div>
+      <div class="journey-container">
+        <div class="journey-header">
+          <span class="journey-tag editable-text" id="journey-subtitle" data-field="journey.subtitle">JOURNEY & EXPERIENCE</span>
+          <h2 class="journey-title editable-text" id="journey-title-text" data-field="journey.title">Here is a breakdown of my education and technical journey</h2>
+        </div>
+
+        <div class="timeline-wrapper">
+          <!-- Wavy path line behind the cards -->
+          <svg class="timeline-line-svg" viewBox="0 0 100 1000" preserveAspectRatio="none">
+            <path id="timeline-path" d="M50,0 Q30,125 50,250 T50,500 T50,750 T50,1000" fill="none" stroke="#e0e0e0" stroke-width="2"/>
+            <path id="timeline-path-active" d="M50,0 Q30,125 50,250 T50,500 T50,750 T50,1000" fill="none" stroke="#ff2a2e" stroke-width="2.5" stroke-dasharray="1000" stroke-dashoffset="1000"/>
+          </svg>
+
+          <!-- Timeline items list -->
+          <div class="timeline-items" id="timeline-list">
+            <!-- Dynamically populated timeline cards -->
+          </div>
+          
+          <!-- Add timeline card button for Admin -->
+          <div class="timeline-add-wrapper admin-only">
+            <button class="btn btn-secondary btn-sm" id="add-timeline-card-btn">
+              <i data-lucide="plus-circle"></i>
+              <span>Add Timeline Milestone</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer id="footer" class="footer">
+    <div class="footer-container">
+      
+      <!-- Location & Info Column -->
+      <div class="footer-col">
+        <h4 class="footer-heading">LOCATION & INFO</h4>
+        <ul class="footer-list">
+          <li>
+            <span class="label">Location:</span> 
+            <span class="val editable-text" id="footer-loc" data-field="footer.location">Bokaro, Jharkhand, India</span>
+          </li>
+          <li>
+            <span class="label">DOB:</span> 
+            <span class="val editable-text" id="footer-dob" data-field="footer.dob">15-05-2005</span>
+          </li>
+          <li>
+            <span class="label">Phone:</span> 
+            <span class="val editable-text" id="footer-phone" data-field="footer.phone">+91 8678018680</span>
+          </li>
+          <li>
+            <span class="label">Email:</span> 
+            <span class="val editable-text" id="footer-email" data-field="footer.email">mrsachin131156@gmail.com</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Digital Profiles Column -->
+      <div class="footer-col">
+        <h4 class="footer-heading">DIGITAL PROFILES</h4>
+        <ul class="footer-list">
+          <li>
+            <span class="label">GitHub:</span>
+            <a href="#" target="_blank" class="val editable-link" id="footer-github" data-link="github">Sachin7280</a>
+          </li>
+          <li>
+            <span class="label">LinkedIn:</span>
+            <a href="#" target="_blank" class="val editable-link" id="footer-linkedin" data-link="linkedin">Sachin</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Status Column -->
+      <div class="footer-col status-col">
+        <h4 class="footer-heading">STATUS</h4>
+        <div class="status-badge">
+          <span class="status-indicator"></span>
+          <span class="status-text editable-text" id="footer-status-text" data-field="footer.status">Available Worldwide</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Giant Footer Typography Brand name -->
+    <div class="footer-giant-brand">
+      <h1 class="giant-text editable-text" id="footer-giant-name" data-field="footer.brandName">sachin</h1>
+    </div>
+
+    <!-- Footer Copyright & Meta info -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <div class="copyright">
+          &copy; <span id="current-year">2026</span> — Built with HTML, CSS & Vanilla JS
+        </div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Admin CMS Sticky Action Toolbar (Hidden by default) -->
+  <div class="admin-toolbar" id="admin-toolbar">
+    <div class="admin-toolbar-container">
+      <div class="admin-status-info">
+        <div class="admin-badge">Admin Mode Active</div>
+        <span class="save-status" id="save-status-msg">All changes saved locally</span>
+      </div>
+      <div class="admin-toolbar-actions">
+        <button class="btn btn-outline btn-sm btn-dark" id="admin-video-btn" title="Change intro reel video">
+          <i data-lucide="video"></i>
+          <span>Manage Video</span>
+        </button>
+        <button class="btn btn-outline btn-sm btn-dark" id="admin-download-btn" title="Download portfolio data JSON to put in your project code">
+          <i data-lucide="download"></i>
+          <span>Download Config JSON</span>
+        </button>
+        <button class="btn btn-outline btn-sm btn-dark" id="admin-logout-btn">
+          <i data-lucide="log-out"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Authentication Modal (Login Modal) -->
+  <div class="modal-backdrop" id="auth-modal">
+    <div class="modal glass">
+      <button class="modal-close-btn" id="close-auth-modal-btn">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="modal-header">
+        <h3 class="modal-title">Access Login</h3>
+        <p class="modal-subtitle">Log in to edit your portfolio content.</p>
+      </div>
+      <form id="auth-form" class="modal-form">
+        <div class="form-group">
+          <label for="auth-username">User ID</label>
+          <input type="text" id="auth-username" required placeholder="Enter User ID">
+        </div>
+        <div class="form-group">
+          <label for="auth-password">Password</label>
+          <input type="password" id="auth-password" required placeholder="Enter password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Log In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dynamic Image Dialog (URL Input / Local File Upload popup) -->
+  <div class="modal-backdrop" id="image-upload-modal">
+    <div class="modal glass">
+      <button class="modal-close-btn" id="close-image-modal-btn">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="modal-header">
+        <h3 class="modal-title">Update Image</h3>
+        <p class="modal-subtitle">Upload a local file or paste an image URL.</p>
+      </div>
+      <div class="image-upload-choices">
+        <div class="form-group">
+          <label for="img-file-input" class="file-upload-label">
+            <i data-lucide="upload-cloud"></i>
+            <span>Upload Image File</span>
+            <input type="file" id="img-file-input" accept="image/*">
+          </label>
+        </div>
+        <div class="modal-divider"><span>OR</span></div>
+        <div class="form-group">
+          <label for="img-url-input">Image URL</label>
+          <input type="url" id="img-url-input" placeholder="https://example.com/image.jpg">
+        </div>
+        <button type="button" class="btn btn-primary btn-block" id="apply-image-url-btn">Apply Image</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Intro Video Dialog -->
+  <div class="modal-backdrop" id="video-modal">
+    <div class="modal glass video-modal-content">
+      <button class="modal-close-btn" id="close-video-modal-btn">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="modal-header">
+        <h3 class="modal-title">Intro Video Reel</h3>
+        <p class="modal-subtitle">Watch the developer introduction or configure it in admin mode.</p>
+      </div>
+      <div class="video-container-wrapper">
+        <div class="video-player-placeholder">
+          <i data-lucide="video" class="video-icon"></i>
+          <p>Intro video / reel is not configured yet.</p>
+          <div class="admin-only" style="margin-top: 15px;">
+            <div class="form-group">
+              <input type="url" id="intro-video-url-input" placeholder="Paste YouTube/Vimeo embed URL or Video File URL" style="width: 100%; max-width: 400px; margin: 0 auto;">
+            </div>
+            <button class="btn btn-primary btn-sm" id="save-video-url-btn">Save Reel URL</button>
+          </div>
+        </div>
+        <!-- Real Video Frame (rendered when URL exists) -->
+        <div class="video-iframe-container" id="video-iframe-container" style="display: none;">
+          <iframe id="video-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Video Management Modal -->
+  <div class="modal-backdrop" id="video-manage-modal">
+    <div class="modal glass video-manage-modal-content">
+      <button class="modal-close-btn" id="close-video-manage-btn">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="modal-header">
+        <h3 class="modal-title">🎬 Manage Intro Video Reel</h3>
+        <p class="modal-subtitle">Upload a local video or paste a YouTube / Vimeo link.</p>
+      </div>
+
+      <!-- Current Video Preview -->
+      <div class="vm-current" id="vm-current-section">
+        <div class="vm-current-label">Current Reel</div>
+        <div class="vm-preview" id="vm-preview">
+          <!-- Populated dynamically -->
+        </div>
+        <button class="btn btn-sm vm-remove-btn" id="vm-remove-btn">
+          <i data-lucide="trash-2"></i>
+          <span>Remove Video</span>
+        </button>
+      </div>
+
+      <!-- No Video State -->
+      <div class="vm-empty" id="vm-empty-section">
+        <div class="vm-empty-icon"><i data-lucide="film"></i></div>
+        <p>No intro reel configured yet.</p>
+      </div>
+
+      <!-- Upload Local Video -->
+      <div class="vm-divider"><span>UPLOAD VIDEO FILE</span></div>
+      <label for="vm-file-input" class="file-upload-label vm-file-label">
+        <i data-lucide="upload-cloud"></i>
+        <span id="vm-file-label-text">Click to choose a video file</span>
+        <small>MP4, WebM, OGG supported</small>
+        <input type="file" id="vm-file-input" accept="video/mp4,video/webm,video/ogg">
+      </label>
+      <button class="btn btn-primary btn-block" id="vm-upload-btn" disabled>
+        <i data-lucide="check"></i>
+        <span>Use This Video File</span>
+      </button>
+
+      <!-- URL Input -->
+      <div class="vm-divider"><span>OR PASTE A LINK</span></div>
+      <div class="form-group">
+        <label for="vm-url-input">YouTube / Vimeo / Direct Video URL</label>
+        <input type="url" id="vm-url-input" placeholder="https://youtube.com/watch?v=... or https://vimeo.com/...">
+      </div>
+      <button class="btn btn-primary btn-block" id="vm-url-save-btn">
+        <i data-lucide="link"></i>
+        <span>Save Video URL</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+</html>
