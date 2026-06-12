@@ -74,8 +74,8 @@ const CREDENTIALS = {
 };
 
 // --- Initialization ---
-document.addEventListener("DOMContentLoaded", () => {
-  loadData();
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadData();
   renderPortfolio();
   setupEventListeners();
   checkScroll();
@@ -88,7 +88,22 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // --- Data Persistence ---
-function loadData() {
+async function loadData() {
+  // Try to load custom data from portfolio-data.json if it exists in the workspace
+  let baseData = defaultPortfolioData;
+  try {
+    const response = await fetch('./portfolio-data.json');
+    if (response.ok) {
+      const jsonData = await response.json();
+      if (jsonData && jsonData.owner) {
+        baseData = jsonData;
+        console.log("Loaded configuration from portfolio-data.json");
+      }
+    }
+  } catch (e) {
+    console.log("No portfolio-data.json found, falling back to default hardcoded data.");
+  }
+
   const savedData = localStorage.getItem("portfolioData");
   if (savedData) {
     try {
@@ -135,10 +150,10 @@ function loadData() {
         saveData();
       }
     } catch (e) {
-      portfolioData = JSON.parse(JSON.stringify(defaultPortfolioData));
+      portfolioData = JSON.parse(JSON.stringify(baseData));
     }
   } else {
-    portfolioData = JSON.parse(JSON.stringify(defaultPortfolioData));
+    portfolioData = JSON.parse(JSON.stringify(baseData));
   }
 }
 
