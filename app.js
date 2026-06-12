@@ -69,7 +69,7 @@ let activeImageTarget = ''; // 'hero' or 'badge'
 
 // Credentials configuration
 const CREDENTIALS = {
-  admin: { username: "admin", password: "adminachu123" },
+  admin: { username: "admin", password:  },
   guest: { username: "guest", password: "guest123" }
 };
 
