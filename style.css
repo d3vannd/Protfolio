@@ -1549,29 +1549,6 @@ body.edit-mode .admin-only {
     width: calc(100% - 40px);
     margin-left: 40px !important;
   }
-  
-  .timeline-item:nth-child(even) {
-    justify-content: flex-start;
-  }
-  
-  .footer-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  .footer-giant-brand {
-    margin: 30px 0;
-  }
-  
-  .giant-text {
-    font-size: 16vw;
-  }
-  
-  .footer-bottom-container {
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-  }
 }
 
 
