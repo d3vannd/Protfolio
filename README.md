@@ -1,4 +1,4 @@
-*Check out my protfolio created using Antigravity* 
+*Check out my protfolio* 
 https://d3vannd.github.io/Protfolio/
 
 
