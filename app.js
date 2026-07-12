@@ -2,16 +2,16 @@
 const defaultPortfolioData = {
   owner: {
     name: "Devanand",
-    role: "Full Stack Developer",
-    roleHeading: "Full Stack Developer",
+    role: "ece engineer",
+    roleHeading: "embedded system engineer",
     heroIntro: "Hi, I'm a",
-    subtext: "Software developer with practical knowledge of Java, Dart, Flutter, and frontend development. Passionate about UI/UX design and modern technologies.",
+    subtext: "Embedded system engineer with practical knowledge of c,asm ets. Passionate about pcb design and modern technologies.",
     photo: "./hero-photo.jpg",
     avatar: "./hero-photo.jpg"
   },
   about: {
     title: "Hello!",
-    introduction: "I am DEVANAND, a software developer with practical knowledge of Java, Dart, Flutter, and frontend development. I build responsive web applications, mobile apps, and user-friendly digital solutions.",
+    introduction: "I am DEVANAND, a Embedded system engineer ",
     skills: ["JAVA", "FLUTTER", "HTML/JS", "CSS/VANILLA", "NODE.JS", "SQL", "GIT"]
   },
   journey: {
@@ -22,37 +22,37 @@ const defaultPortfolioData = {
         id: "1",
         number: "01",
         title: "Education",
-        description: "B.Voc in Software Development (2024-27) at Indira Gandhi National Tribal University. 12th PCM at S.S. +2 High School Kasmar.",
+        description: "......................",
         theme: "red"
       },
       {
         id: "2",
         number: "02",
         title: "Skills",
-        description: "Java (100%), Kotlin/Dart/Flutter (90%), HTML/CSS/JS (90%). Proficient in robust modern technologies.",
+        description: "....................",
         theme: "red"
       },
       {
         id: "3",
         number: "03",
         title: "Projects",
-        description: "Developed E-Commerce Websites, Management Systems (LMS, Quiz portals), Android Apps, and Cross-Platform Apps.",
+        description: "................",
         theme: "white"
       },
       {
         id: "4",
         number: "04",
         title: "Awards",
-        description: "Secured 1st Rank in District Level Science Exhibition for Innovation, technical presentation, and project execution.",
+        description: "....................",
         theme: "red"
       }
     ]
   },
   footer: {
-    location: "Bokaro, Jharkhand, India",
-    dob: "15-05-2005",
-    phone: "+91 8678018680",
-    email: "mrsachin131156@gmail.com",
+    location: "..........",
+    dob: ".........",
+    phone: ".........",
+    email: ".............",
     github: { name: "Devanand", url: "https://github.com/Devanand" },
     linkedin: { name: "Devanand", url: "https://linkedin.com/in/devanand" },
     status: "Available Worldwide",
