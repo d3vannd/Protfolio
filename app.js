@@ -1,4 +1,4 @@
-// --- Default Portfolio Data (Devanand's Profile) ---
+// --- Default Portfolio Data (Devanand's Profile) --
 const defaultPortfolioData = {
   owner: {
     name: "Devanand",
