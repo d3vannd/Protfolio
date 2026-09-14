@@ -2,64 +2,126 @@
 const defaultPortfolioData = {
   owner: {
     name: "Devanand",
-    role: "ece engineer",
-    roleHeading: "embedded system engineer",
-    heroIntro: "Hi, I'm a",
-    subtext: "Embedded system engineer with practical knowledge of c,asm ets. Passionate about pcb design and modern technologies.",
+    role: "ECE Student | PCB Design | Embedded Systems Enthusiast",
+    roleHeading: "Electronics and Communication Engineering student",
+    heroIntro: "Hi, I'm an",
+    subtext: "Electronics and Communication Engineering student with practical knowledge of embedded systems, PCB design, microcontrollers, and VLSI. Passionate about embedded technology, IoT, and hardware-software integration.",
     photo: "./hero-photo.jpg",
     avatar: "./hero-photo.jpg"
   },
   about: {
     title: "Hello!",
-    introduction: "I am DEVANAND, a Embedded system engineer ",
-    skills: ["JAVA", "FLUTTER", "HTML/JS", "CSS/VANILLA", "NODE.JS", "SQL", "GIT"]
+    introduction: "I am DEVANAND, an Electronics and Communication Engineering student at GEC Wayanad with a strong passion for embedded systems, microcontroller programming, PCB design, and hardware-software integration.",
+    skills: ["C / C++", "ATMEGA328P", "PCB DESIGN", "EASYEDA", "ARDUINO", "EMBEDDED SYSTEMS", "HARDWARE ROUTING", "GIT"]
   },
+  projects: [
+    {
+      id: "proj-1",
+      title: "Bluetooth Home Automation",
+      image: "./assets/projects/project1.jpg",
+      description: "A compact home automation system built using microcontrollers and a Bluetooth module to control household appliances wirelessly. Solves the need for convenient, low-cost remote device switching and monitoring.",
+      tags: ["ATmega328P", "HC-05 Bluetooth", "C", "Relay Module", "PCB Design"],
+      github: "#",
+      demo: "#"
+    },
+    {
+      id: "proj-2",
+      title: "ATmega328P Sensor Interfacing Board",
+      image: "./assets/projects/project2.jpg",
+      description: "Complete schematic and custom PCB design for interfacing multiple analog and digital sensors with ATmega328P. Solves noisy sensor reading issues through optimized signal routing and power decoupling.",
+      tags: ["ATmega328P", "EasyEDA", "C", "Schematic Design", "PCB Layout"],
+      github: "#",
+      demo: "#"
+    },
+    {
+      id: "proj-3",
+      title: "CPS Internship PCB Design",
+      image: "./assets/projects/project3.jpg",
+      description: "Developed custom hardware featuring a buzzer alert circuit, AREF decoupling networks, and optimized copper pour ground planes. Designed during internship at Cyber Physical Systems, GEC Thrissur to enhance circuit stability.",
+      tags: ["EasyEDA", "Circuit Design", "AREF Decoupling", "Copper Pour", "Hardware Testing"],
+      github: "#",
+      demo: "#"
+    },
+    {
+      id: "proj-4",
+      title: "Custom Drone Flight Controller Board",
+      image: "./assets/projects/project4.jpg",
+      description: "A custom PCB flight controller board for quadcopters featuring IMU sensor integration and ESC telemetry routing. Designed to provide lightweight and reliable flight control for drone club activities.",
+      tags: ["Embedded C", "EasyEDA", "IMU Integration", "PCB Design", "Drone Electronics"],
+      github: "#",
+      demo: "#"
+    }
+  ],
   journey: {
     subtitle: "JOURNEY & EXPERIENCE",
     title: "Here is a breakdown of my education and technical journey",
     items: [
       {
         id: "1",
-        number: "01",
-        title: "Education",
-        description: "......................",
+        year: "2024",
+        number: "2024",
+        title: "Started B-Tech ECE at GEC Wayanad",
+        description: "Admitted to the B.Tech Electronics and Communication Engineering program at Government Engineering College, Wayanad.",
         theme: "red"
       },
       {
         id: "2",
-        number: "02",
-        title: "Skills",
-        description: "....................",
+        year: "2024–2025",
+        number: "2024-25",
+        title: "Joined G-bot Robotics Club",
+        description: "Became an active member working on robotics projects, microcontrollers, hardware integration, and technical workshops.",
         theme: "red"
       },
       {
         id: "3",
-        number: "03",
-        title: "Projects",
-        description: "................",
+        year: "2025",
+        number: "2025",
+        title: "Joined ORION (Volunteering)",
+        description: "Engaged in social volunteering and event organizing initiatives as part of the ORION student team.",
         theme: "white"
       },
       {
         id: "4",
-        number: "04",
-        title: "Awards",
-        description: "....................",
+        year: "2026",
+        number: "2026",
+        title: "Bluetooth Home Automation Mini Project",
+        description: "Designed and developed a wireless home automation circuit featuring Bluetooth control and relay switching.",
         theme: "red"
+      },
+      {
+        id: "5",
+        year: "2026",
+        number: "2026",
+        title: "Summer Internship — Cyber Physical Systems, GEC Thrissur ECE",
+        description: "Worked on advanced PCB design, buzzer alert circuits, AREF decoupling networks, and copper pour ground plane routing.",
+        theme: "white"
+      },
+      {
+        id: "6",
+        year: "2026",
+        number: "2026",
+        title: "CTO, Drone Club GECW",
+        description: "Appointed Chief Technology Officer, leading technical projects, drone hardware assembly, and flight electronics development.",
+        theme: "red"
+      },
+      {
+        id: "7",
+        year: "2026",
+        number: "2026",
+        title: "Internship at SHOBINZ LAB (Remote)",
+        description: "Gaining hands-on experience in remote embedded engineering, circuit troubleshooting, and electronic system design.",
+        theme: "white"
       }
     ]
   },
   footer: {
-    location: "..........",
-    dob: ".........",
-    phone: ".........",
-    email: ".............",
+    location: "Bokaro, Jharkhand, India",
+    email: "devanand.ece@gmail.com",
     github: { name: "Devanand", url: "https://github.com/Devanand" },
     linkedin: { name: "Devanand", url: "https://linkedin.com/in/devanand" },
     status: "Available Worldwide",
     brandName: "devanand"
-  },
-  videoUrl: "",
-  videoIsLocal: false
+  }
 };
 
 // --- App State ---
@@ -89,7 +151,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // --- Data Persistence ---
 async function loadData() {
-  // Try to load custom data from portfolio-data.json if it exists in the workspace
   let baseData = defaultPortfolioData;
   try {
     const response = await fetch('./portfolio-data.json');
@@ -97,7 +158,6 @@ async function loadData() {
       const jsonData = await response.json();
       if (jsonData && jsonData.owner) {
         baseData = jsonData;
-        console.log("Loaded configuration from portfolio-data.json");
       }
     }
   } catch (e) {
@@ -108,53 +168,31 @@ async function loadData() {
   if (savedData) {
     try {
       portfolioData = JSON.parse(savedData);
-      // Fallback check for structure updates
-      if (!portfolioData.owner) throw new Error();
-
-      // Auto-migrate heroIntro field if missing
-      if (portfolioData.owner && !portfolioData.owner.heroIntro) {
-        portfolioData.owner.heroIntro = "Hi, I'm a";
-      }
-
-      // Auto-migrate old Unsplash placeholder photos to the real hero photo
-      const OLD_PHOTOS = [
-        "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6",
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-      ];
-      if (portfolioData.owner.photo && OLD_PHOTOS.some(p => portfolioData.owner.photo.startsWith(p))) {
-        portfolioData.owner.photo = "./hero-photo.jpg";
-        saveData();
-      }
-      if (portfolioData.owner.avatar && OLD_PHOTOS.some(p => portfolioData.owner.avatar.startsWith(p))) {
-        portfolioData.owner.avatar = "./hero-photo.jpg";
-        saveData();
-      }
-      
-      // Auto-migrate old name if brandName was still the default "sachin"
-      if (portfolioData.footer && portfolioData.footer.brandName === "sachin") {
-        portfolioData.footer.brandName = "devanand";
-        portfolioData.owner.name = "Devanand";
-        if (portfolioData.about && portfolioData.about.introduction) {
-          portfolioData.about.introduction = portfolioData.about.introduction
-            .replace(/SACHIN KUMAR/gi, "DEVANAND")
-            .replace(/Sachin/gi, "Devanand");
-        }
-        if (portfolioData.footer.github && portfolioData.footer.github.name === "Sachin7280") {
-          portfolioData.footer.github.name = "Devanand";
-          portfolioData.footer.github.url = "https://github.com/Devanand";
-        }
-        if (portfolioData.footer.linkedin && portfolioData.footer.linkedin.name === "Sachin") {
-          portfolioData.footer.linkedin.name = "Devanand";
-          portfolioData.footer.linkedin.url = "https://linkedin.com/in/devanand";
-        }
-        saveData();
-      }
     } catch (e) {
-      portfolioData = JSON.parse(JSON.stringify(baseData));
+      portfolioData = {};
     }
   } else {
-    portfolioData = JSON.parse(JSON.stringify(baseData));
+    portfolioData = {};
   }
+
+  // Always enforce baseData for projects, journey, about, owner, and footer if outdated or missing
+  if (!portfolioData.projects || !Array.isArray(portfolioData.projects) || portfolioData.projects.length < 4) {
+    portfolioData.projects = baseData.projects;
+  }
+  if (!portfolioData.journey || !portfolioData.journey.items || portfolioData.journey.items.length < 7 || !portfolioData.journey.items[0].year) {
+    portfolioData.journey = baseData.journey;
+  }
+  if (!portfolioData.owner || portfolioData.owner.role !== baseData.owner.role || portfolioData.owner.subtext !== baseData.owner.subtext || portfolioData.owner.roleHeading !== baseData.owner.roleHeading) {
+    portfolioData.owner = baseData.owner;
+  }
+  if (!portfolioData.about || !portfolioData.about.skills || portfolioData.about.skills.includes('JAVA')) {
+    portfolioData.about = baseData.about;
+  }
+  if (!portfolioData.footer || portfolioData.footer.brandName !== 'devanand') {
+    portfolioData.footer = baseData.footer;
+  }
+
+  saveData();
 }
 
 function saveData() {
@@ -249,27 +287,40 @@ function renderPortfolio() {
   document.getElementById("badge-role").innerText = (portfolioData.owner.role || "").toUpperCase();
   generateBarcodeSVG(portfolioData.owner.name);
 
-  // 6. Journey / Timeline Card Layout
+  // 6. Projects Section
+  renderProjects();
+
+  // 7. Journey / Timeline Card Layout
   renderTimeline();
 
-  // 7. Footer Contacts
-  document.getElementById("footer-loc").innerText = portfolioData.footer.location;
-  document.getElementById("footer-dob").innerText = portfolioData.footer.dob;
-  document.getElementById("footer-phone").innerText = portfolioData.footer.phone;
-  document.getElementById("footer-email").innerText = portfolioData.footer.email;
+  // 8. Footer Contacts
+  const locEl = document.getElementById("footer-loc");
+  if (locEl) locEl.innerText = portfolioData.footer.location;
+  
+  const emailEl = document.getElementById("footer-email");
+  if (emailEl) emailEl.innerText = portfolioData.footer.email;
   
   // Links
   const githubLink = document.getElementById("footer-github");
-  githubLink.innerText = portfolioData.footer.github.name;
-  githubLink.href = portfolioData.footer.github.url;
+  if (githubLink) {
+    githubLink.innerText = portfolioData.footer.github.name;
+    githubLink.href = portfolioData.footer.github.url;
+  }
   
   const linkedinLink = document.getElementById("footer-linkedin");
-  linkedinLink.innerText = portfolioData.footer.linkedin.name;
-  linkedinLink.href = portfolioData.footer.linkedin.url;
+  if (linkedinLink) {
+    linkedinLink.innerText = portfolioData.footer.linkedin.name;
+    linkedinLink.href = portfolioData.footer.linkedin.url;
+  }
 
-  document.getElementById("footer-status-text").innerText = portfolioData.footer.status;
-  document.getElementById("footer-giant-name").innerText = portfolioData.footer.brandName;
-  document.getElementById("current-year").innerText = new Date().getFullYear();
+  const statusEl = document.getElementById("footer-status-text");
+  if (statusEl) statusEl.innerText = portfolioData.footer.status;
+  
+  const brandEl = document.getElementById("footer-giant-name");
+  if (brandEl) brandEl.innerText = portfolioData.footer.brandName;
+  
+  const yearEl = document.getElementById("current-year");
+  if (yearEl) yearEl.innerText = new Date().getFullYear();
 
   // Re-enable Edit Mode states if admin
   if (currentRole === 'admin') {
@@ -369,11 +420,53 @@ function stripBrandGlowSpans() {
   }
 }
 
+// --- Projects Rendering ---
+function renderProjects() {
+  const container = document.getElementById("projects-grid");
+  if (!container) return;
+  container.innerHTML = "";
+
+  if (!portfolioData.projects || portfolioData.projects.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">
+        No projects configured yet.
+      </div>
+    `;
+    return;
+  }
+
+  portfolioData.projects.forEach((project, index) => {
+    const card = document.createElement("div");
+    card.className = "project-card";
+
+    const tagsHtml = (project.tags || []).map(tag => `<span class="project-tag">${tag}</span>`).join("");
+    const githubBtn = project.github ? `<a href="${project.github}" target="_blank" class="btn-project-link"><i data-lucide="github" style="width:16px;height:16px;"></i> View on GitHub</a>` : '';
+    const demoBtn = project.demo ? `<a href="${project.demo}" target="_blank" class="btn-project-link"><i data-lucide="external-link" style="width:16px;height:16px;"></i> Live Demo</a>` : '';
+
+    card.innerHTML = `
+      <div class="project-thumb-wrapper">
+        <img src="${project.image || './assets/projects/project1.jpg'}" alt="${project.title}" class="project-thumb">
+      </div>
+      <div class="project-content">
+        <h3 class="project-card-title">${project.title}</h3>
+        <p class="project-card-desc">${project.description}</p>
+        <div class="project-tags">${tagsHtml}</div>
+        <div class="project-links">
+          ${githubBtn}
+          ${demoBtn}
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
 function renderTimeline() {
   const listContainer = document.getElementById("timeline-list");
+  if (!listContainer) return;
   listContainer.innerHTML = "";
 
-  if (portfolioData.journey.items.length === 0) {
+  if (!portfolioData.journey.items || portfolioData.journey.items.length === 0) {
     listContainer.innerHTML = `
       <div style="text-align: center; padding: 40px; color: var(--text-muted);">
         No milestones configured yet. Click the button below to add one.
@@ -393,7 +486,7 @@ function renderTimeline() {
           <button class="btn-icon-sm" onclick="editTimelineTheme(${index})" title="Toggle theme (Red/White)"><i data-lucide="palette" style="width: 14px; height: 14px;"></i></button>
           <button class="btn-icon-sm" onclick="deleteTimelineItem(${index})" title="Delete Milestone"><i data-lucide="trash-2" style="width: 14px; height: 14px;"></i></button>
         </div>
-        <div class="card-num">${item.number || `0${index + 1}`}</div>
+        <span class="timeline-year">${item.year || item.number || ''}</span>
         <h3 class="card-title editable-text" contenteditable="${currentRole === 'admin'}" data-index="${index}" data-prop="title">${item.title}</h3>
         <p class="card-desc editable-text" contenteditable="${currentRole === 'admin'}" data-index="${index}" data-prop="description">${item.description}</p>
       </div>
@@ -476,14 +569,6 @@ function enableEditMode() {
   // Show Admin Action Bar
   const bar = document.getElementById("admin-toolbar");
   if (bar) bar.classList.add("active");
-
-  // Show "Login" nav status
-  const loginBtn = document.getElementById("login-nav-btn");
-  if (loginBtn) {
-    loginBtn.innerText = "Log out";
-    loginBtn.classList.remove("btn-secondary");
-    loginBtn.classList.add("btn-primary");
-  }
 }
 
 function disableEditMode() {
@@ -496,13 +581,6 @@ function disableEditMode() {
 
   const bar = document.getElementById("admin-toolbar");
   if (bar) bar.classList.remove("active");
-
-  const loginBtn = document.getElementById("login-nav-btn");
-  if (loginBtn) {
-    loginBtn.innerText = "Login";
-    loginBtn.classList.add("btn-secondary");
-    loginBtn.classList.remove("btn-primary");
-  }
 }
 
 // --- Skill Tag Management ---
@@ -612,53 +690,6 @@ function setupEventListeners() {
     animateTimelineOnScroll();
   });
 
-  // Modal open/close actions
-  const loginBtn = document.getElementById("login-nav-btn");
-  const authModal = document.getElementById("auth-modal");
-  const closeAuthBtn = document.getElementById("close-auth-modal-btn");
-
-  loginBtn.addEventListener("click", () => {
-    if (currentRole !== 'none') {
-      // Logout
-      currentRole = 'none';
-      disableEditMode();
-      renderPortfolio();
-      showToast("Logged out successfully", "success");
-    } else {
-      authModal.classList.add("active");
-    }
-  });
-
-  closeAuthBtn.addEventListener("click", () => {
-    authModal.classList.remove("active");
-  });
-
-  // Auth Form Submit
-  const authForm = document.getElementById("auth-form");
-  authForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const userVal = document.getElementById("auth-username").value.trim().toLowerCase();
-    const passVal = document.getElementById("auth-password").value;
-
-    if (userVal === CREDENTIALS.admin.username && passVal === CREDENTIALS.admin.password) {
-      currentRole = 'admin';
-      authModal.classList.remove("active");
-      enableEditMode();
-      renderPortfolio();
-      showToast("Logged in as Admin. Edit Mode enabled!", "success");
-      authForm.reset();
-    } else if (userVal === CREDENTIALS.guest.username && passVal === CREDENTIALS.guest.password) {
-      currentRole = 'guest';
-      authModal.classList.remove("active");
-      disableEditMode();
-      renderPortfolio();
-      showToast("Logged in as Guest. Welcome!", "success");
-      authForm.reset();
-    } else {
-      showToast("Invalid credentials. Try again.", "error");
-    }
-  });
-
   // Inline-editing saving on element focus losses
   document.querySelectorAll(".editable-text").forEach(el => {
     el.addEventListener("blur", (e) => {
@@ -707,199 +738,76 @@ function setupEventListeners() {
   });
 
   // Skills and timeline cards adding listeners
-  document.getElementById("add-tag-btn").addEventListener("click", addSkill);
-  document.getElementById("add-timeline-card-btn").addEventListener("click", addTimelineItem);
+  const addTagBtn = document.getElementById("add-tag-btn");
+  if (addTagBtn) addTagBtn.addEventListener("click", addSkill);
+
+  const addTimelineBtn = document.getElementById("add-timeline-card-btn");
+  if (addTimelineBtn) addTimelineBtn.addEventListener("click", addTimelineItem);
 
   // Edit Image Triggers
-  document.getElementById("hero-img-edit-overlay").addEventListener("click", () => triggerImageEdit('hero'));
-  document.getElementById("badge-img-edit-overlay").addEventListener("click", () => triggerImageEdit('badge'));
+  const heroImgOverlay = document.getElementById("hero-img-edit-overlay");
+  if (heroImgOverlay) heroImgOverlay.addEventListener("click", () => triggerImageEdit('hero'));
+
+  const badgeImgOverlay = document.getElementById("badge-img-edit-overlay");
+  if (badgeImgOverlay) badgeImgOverlay.addEventListener("click", () => triggerImageEdit('badge'));
 
   // Image Upload File Listeners
   const fileInput = document.getElementById("img-file-input");
-  fileInput.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    handleLocalImageFile(file);
-  });
+  if (fileInput) {
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      handleLocalImageFile(file);
+    });
+  }
 
   const closeImageModalBtn = document.getElementById("close-image-modal-btn");
-  closeImageModalBtn.addEventListener("click", () => {
-    document.getElementById("image-upload-modal").classList.remove("active");
-  });
+  if (closeImageModalBtn) {
+    closeImageModalBtn.addEventListener("click", () => {
+      const modal = document.getElementById("image-upload-modal");
+      if (modal) modal.classList.remove("active");
+    });
+  }
 
   const applyImageUrlBtn = document.getElementById("apply-image-url-btn");
-  applyImageUrlBtn.addEventListener("click", () => {
-    const url = document.getElementById("img-url-input").value.trim();
-    if (url !== "") {
-      if (activeImageTarget === 'hero') {
-        portfolioData.owner.photo = url;
-      } else if (activeImageTarget === 'badge') {
-        portfolioData.owner.avatar = url;
+  if (applyImageUrlBtn) {
+    applyImageUrlBtn.addEventListener("click", () => {
+      const urlInput = document.getElementById("img-url-input");
+      if (!urlInput) return;
+      const url = urlInput.value.trim();
+      if (url !== "") {
+        if (activeImageTarget === 'hero') {
+          portfolioData.owner.photo = url;
+        } else if (activeImageTarget === 'badge') {
+          portfolioData.owner.avatar = url;
+        }
+        
+        saveData();
+        renderPortfolio();
+        
+        const modal = document.getElementById("image-upload-modal");
+        if (modal) modal.classList.remove("active");
+        urlInput.value = "";
+        showToast("Image link applied successfully", "success");
       }
-      
-      saveData();
-      renderPortfolio();
-      
-      document.getElementById("image-upload-modal").classList.remove("active");
-      document.getElementById("img-url-input").value = "";
-      showToast("Image link applied successfully", "success");
-    }
-  });
+    });
+  }
 
   // Admin Logout Button Toolbar
-  document.getElementById("admin-logout-btn").addEventListener("click", () => {
-    currentRole = 'none';
-    disableEditMode();
-    renderPortfolio();
-    showToast("Logged out from Admin", "success");
-  });
+  const adminLogoutBtn = document.getElementById("admin-logout-btn");
+  if (adminLogoutBtn) {
+    adminLogoutBtn.addEventListener("click", () => {
+      currentRole = 'none';
+      disableEditMode();
+      renderPortfolio();
+      showToast("Logged out from Admin", "success");
+    });
+  }
 
   // Download Config Button
-  document.getElementById("admin-download-btn").addEventListener("click", downloadConfig);
-
-  // Video Reel Play & configuration Dialogs
-  const playBtn = document.getElementById("play-intro-btn");
-  const videoModal = document.getElementById("video-modal");
-  const closeVideoBtn = document.getElementById("close-video-modal-btn");
-  const saveVideoBtn = document.getElementById("save-video-url-btn");
-
-  playBtn.addEventListener("click", () => {
-    videoModal.classList.add("active");
-    loadVideoReel();
-  });
-
-  closeVideoBtn.addEventListener("click", () => {
-    videoModal.classList.remove("active");
-    // Stop video frame playing
-    document.getElementById("video-iframe").src = "";
-  });
-
-  saveVideoBtn.addEventListener("click", () => {
-    const videoUrlInput = document.getElementById("intro-video-url-input").value.trim();
-    if (videoUrlInput !== "") {
-      // Simple YouTube embed path transformer if raw watch URL provided
-      let embedUrl = videoUrlInput;
-      if (videoUrlInput.includes("youtube.com/watch?v=")) {
-        const videoId = videoUrlInput.split("v=")[1].split("&")[0];
-        embedUrl = `https://www.youtube.com/embed/${videoId}`;
-      } else if (videoUrlInput.includes("youtu.be/")) {
-        const videoId = videoUrlInput.split("youtu.be/")[1].split("?")[0];
-        embedUrl = `https://www.youtube.com/embed/${videoId}`;
-      }
-
-      portfolioData.videoUrl = embedUrl;
-      saveData();
-      loadVideoReel();
-      showToast("Video reel URL updated!", "success");
-    }
-  });
-
-  // ── Admin Video Management Modal ──────────────────────────────────────────
-  let pendingVideoFile = null; // holds a selected File object before user confirms
-
-  // Open from the admin toolbar button
-  document.getElementById("admin-video-btn").addEventListener("click", () => {
-    openVideoManageModal();
-  });
-
-  // Close button
-  document.getElementById("close-video-manage-btn").addEventListener("click", () => {
-    closeVideoManageModal();
-  });
-
-  // File picker — when admin selects a local video file
-  const vmFileInput = document.getElementById("vm-file-input");
-  vmFileInput.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    pendingVideoFile = file;
-    // Show filename in label
-    document.getElementById("vm-file-label-text").textContent = file.name;
-    // Enable the "Use This Video File" button
-    document.getElementById("vm-upload-btn").disabled = false;
-  });
-
-  // "Use This Video File" — convert to object URL and save
-  document.getElementById("vm-upload-btn").addEventListener("click", () => {
-    if (!pendingVideoFile) return;
-
-    // For local files use an object URL (works while the server is running locally)
-    const objectUrl = URL.createObjectURL(pendingVideoFile);
-    portfolioData.videoUrl = objectUrl;
-    portfolioData.videoIsLocal = true; // flag so we render a <video> tag, not iframe
-    saveData();
-    loadVideoReel();
-    refreshVideoManageModal();
-    showToast("Local video applied successfully!", "success");
-  });
-
-  // URL input live validation feedback
-  const vmUrlInput = document.getElementById("vm-url-input");
-  // Insert feedback element just after the input
-  const vmFeedback = document.createElement("div");
-  vmFeedback.className = "vm-url-feedback";
-  vmUrlInput.parentNode.insertBefore(vmFeedback, vmUrlInput.nextSibling);
-
-  vmUrlInput.addEventListener("input", () => {
-    const val = vmUrlInput.value.trim();
-    if (!val) { vmFeedback.className = "vm-url-feedback"; return; }
-
-    const isYT = val.includes("youtube.com") || val.includes("youtu.be");
-    const isVimeo = val.includes("vimeo.com");
-    const isDirect = /\.(mp4|webm|ogg)(\?.*)?$/i.test(val);
-
-    if (isYT || isVimeo || isDirect) {
-      vmFeedback.className = "vm-url-feedback valid";
-      vmFeedback.textContent = isYT ? "✓ YouTube link detected — will auto-convert to embed"
-        : isVimeo ? "✓ Vimeo link detected — will auto-convert to embed"
-        : "✓ Direct video file link";
-    } else {
-      vmFeedback.className = "vm-url-feedback invalid";
-      vmFeedback.textContent = "⚠ Not a recognised video URL. Try a YouTube, Vimeo or direct .mp4 link.";
-    }
-  });
-
-  // "Save Video URL" button
-  document.getElementById("vm-url-save-btn").addEventListener("click", () => {
-    const raw = vmUrlInput.value.trim();
-    if (!raw) { showToast("Please paste a video URL first.", "error"); return; }
-
-    let embedUrl = raw;
-    portfolioData.videoIsLocal = false;
-
-    // Auto-transform common watch-page URLs to embed URLs
-    if (raw.includes("youtube.com/watch?v=")) {
-      const videoId = raw.split("v=")[1].split("&")[0];
-      embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0`;
-    } else if (raw.includes("youtu.be/")) {
-      const videoId = raw.split("youtu.be/")[1].split("?")[0];
-      embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0`;
-    } else if (raw.includes("vimeo.com/") && !raw.includes("player.vimeo.com")) {
-      const videoId = raw.split("vimeo.com/")[1].split("?")[0].split("/")[0];
-      embedUrl = `https://player.vimeo.com/video/${videoId}`;
-    }
-
-    portfolioData.videoUrl = embedUrl;
-    saveData();
-    loadVideoReel();
-    refreshVideoManageModal();
-    vmUrlInput.value = "";
-    vmFeedback.className = "vm-url-feedback";
-    showToast("Intro video saved!", "success");
-  });
-
-  // "Remove Video" button
-  document.getElementById("vm-remove-btn").addEventListener("click", () => {
-    portfolioData.videoUrl = "";
-    portfolioData.videoIsLocal = false;
-    saveData();
-    loadVideoReel();
-    refreshVideoManageModal();
-    // Stop the main viewer iframe too
-    const iframe = document.getElementById("video-iframe");
-    if (iframe) iframe.src = "";
-    showToast("Intro video removed.", "success");
-  });
+  const adminDlBtn = document.getElementById("admin-download-btn");
+  if (adminDlBtn) {
+    adminDlBtn.addEventListener("click", downloadConfig);
+  }
 
   // Dismiss modals by clicking on background backdrop
   document.querySelectorAll(".modal-backdrop").forEach(backdrop => {
@@ -911,104 +819,20 @@ function setupEventListeners() {
   });
 }
 
-// ── Video Manage Modal helpers ─────────────────────────────────────────────
-function openVideoManageModal() {
-  refreshVideoManageModal();
-  document.getElementById("video-manage-modal").classList.add("active");
-  // Reset file picker state
-  document.getElementById("vm-file-input").value = "";
-  document.getElementById("vm-file-label-text").textContent = "Click to choose a video file";
-  document.getElementById("vm-upload-btn").disabled = true;
-  document.getElementById("vm-url-input").value = "";
-  if (typeof lucide !== "undefined") lucide.createIcons();
-}
-
-function closeVideoManageModal() {
-  document.getElementById("video-manage-modal").classList.remove("active");
-}
-
-function refreshVideoManageModal() {
-  const hasVideo = portfolioData.videoUrl && portfolioData.videoUrl !== "";
-  const currentSection = document.getElementById("vm-current-section");
-  const emptySection   = document.getElementById("vm-empty-section");
-  const preview        = document.getElementById("vm-preview");
-
-  if (hasVideo) {
-    currentSection.style.display = "block";
-    emptySection.style.display   = "none";
-
-    // Render a <video> for local blob URLs, <iframe> for embed links
-    if (portfolioData.videoIsLocal || portfolioData.videoUrl.startsWith("blob:")) {
-      preview.innerHTML = `
-        <video src="${portfolioData.videoUrl}" controls muted style="width:100%;height:100%;object-fit:cover;"></video>`;
-    } else {
-      preview.innerHTML = `
-        <iframe src="${portfolioData.videoUrl}" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>`;
-    }
-  } else {
-    currentSection.style.display = "none";
-    emptySection.style.display   = "block";
-    preview.innerHTML = "";
-  }
-}
-
 function closeAllModals() {
   document.querySelectorAll(".modal-backdrop").forEach(b => {
     b.classList.remove("active");
   });
-  // Stop video iframes when any modal closes
-  const iframe = document.getElementById("video-iframe");
-  if (iframe) iframe.src = "";
 }
 
 // Check navigation shrink background on scroll
 function checkScroll() {
   const nav = document.querySelector(".navbar");
+  if (!nav) return;
   if (window.scrollY > 50) {
     nav.classList.add("scrolled");
   } else {
     nav.classList.remove("scrolled");
-  }
-}
-
-// Load Video iframe logic — supports both embed URLs and local blob video files
-function loadVideoReel() {
-  const container   = document.getElementById("video-iframe-container");
-  const placeholder = document.querySelector(".video-player-placeholder");
-  const adminInput  = document.getElementById("intro-video-url-input");
-
-  if (portfolioData.videoUrl && portfolioData.videoUrl !== "") {
-    container.style.display = "block";
-    placeholder.style.display = "none";
-
-    const isBlob = portfolioData.videoUrl.startsWith("blob:");
-    const isLocal = portfolioData.videoIsLocal || isBlob;
-
-    if (isLocal) {
-      // Replace iframe with a native <video> player for local files
-      container.innerHTML = `
-        <video src="${portfolioData.videoUrl}" controls style="width:100%;height:100%;object-fit:cover;">
-          Your browser does not support HTML video.
-        </video>`;
-    } else {
-      // Restore iframe if previously replaced
-      if (!document.getElementById("video-iframe")) {
-        container.innerHTML = `<iframe id="video-iframe" src="" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>`;
-      }
-      document.getElementById("video-iframe").src = portfolioData.videoUrl;
-    }
-  } else {
-    container.style.display = "none";
-    placeholder.style.display = "flex";
-    // Reset container back to iframe template
-    container.innerHTML = `<iframe id="video-iframe" src="" frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>`;
-    if (adminInput) adminInput.value = "";
   }
 }
 
